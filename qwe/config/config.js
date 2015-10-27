@@ -6,28 +6,28 @@ var config = {
   development: {
     root: rootPath,
     app: {
-      name: 'test-yo'
+      name: 'qwe'
     },
     port: 3000,
-    db: 'mongodb://localhost/test-yo-development'
+    db: 'mongodb://localhost/qwe-development'
   },
 
   test: {
     root: rootPath,
     app: {
-      name: 'test-yo'
+      name: 'qwe'
     },
     port: 3000,
-    db: 'mongodb://localhost/test-yo-test'
+    db: 'mongodb://localhost/qwe-test'
   },
 
   production: {
     root: rootPath,
     app: {
-      name: 'test-yo'
+      name: 'qwe'
     },
     port: 3000,
-    db: 'mongodb://localhost/test-yo-production'
+    db: 'mongodb://localhost/qwe-production'
   }
 };
 
