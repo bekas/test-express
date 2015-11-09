@@ -16,6 +16,6 @@ module.exports = {
 			else
 				console.log(userToSave.name + ' was written to db');
 		  });
-	}
-	
+	},
+		
 }

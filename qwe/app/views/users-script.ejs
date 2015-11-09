@@ -1,0 +1,48 @@
+<% include header %>
+ <% if(script == 'js') { %> <script src="/js/js.js"></script> <% } %>
+ <% if(script == 'jquery') { %> <script src="/js/jquery.js"/></script> <% } %>
+ <% if(script == 'knock') { %> <script src="/js/knock.js"/></script> <% } %>
+  <% if(script == 'angular') { %> <script src="/js/angular/app.js"/></script> <% } %>
+  <% if(script == 'angular') { %> <script src="/js/angular/services/userSrvc.js"/></script> <% } %>
+ <% if(script == 'angular') { %> <script src="/js/angular/controllers/userCtrl.js"/></script> <% } %>
+ <% if(script == 'angular') { %> <script src="/js/angular/directives/userList.js"/></script> <% } %>
+ 
+  <h1>USERS</h1>
+
+<% if(script == 'js' || script == 'jquery') { %>
+  <ul class="user-list">
+  </ul>  
+  <div class="user-add">
+	 <input id="user-add-name" name="name"/>
+	 <button id="user-add-button">Добавить! </button>
+  </div>
+<% } %>  
+
+
+<% if(script == 'knock') { %>
+  <ul data-bind="foreach: users">
+    <li>
+        <span data-bind="text: name"></span>
+    </li>
+  </ul> 
+	<div class="user-add">
+    <input id="user-add-name" data-bind="value: userName" name="name"/>
+    <button data-bind="click: addUser">Добавить</button>
+  </div>
+<% } %>  
+
+
+<% if(script == 'angular') { %>
+  <div ng-app="mySuperApp">
+    <div ng-controller="UserCtrl">
+      <user-list users="users"></user-list>      
+      <div class="user-add">
+        <input ng-model="userName"/>
+        <button ng-click="addUser()">Добавить</button>
+      </div>
+    </div>
+  </div>
+<% } %>  
+  
+  
+<% include footer %>

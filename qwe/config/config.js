@@ -8,7 +8,7 @@ var config = {
     app: {
       name: 'qwe'
     },
-    port: 3000,
+    port: 3005,
     db: 'mongodb://localhost/qwe-development'
   },
 
