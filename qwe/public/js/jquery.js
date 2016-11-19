@@ -3,7 +3,8 @@ $(function(){
 
 	$('button#user-add-button').click(function(){
 		var user = {name: $('input#user-add-name').val() };
-		$.post(	'/users/json',	user, function(data){ loadUsers() });	 
+		addUser(user);
+		$.post(	'/users/json',	user);	 
 	})
 	
 	
@@ -12,9 +13,12 @@ $(function(){
 		function onUserGetSuccess(users){
 			$('ul.user-list').empty();
 			for(var i=0;i<users.users.length;i++){
-				$('ul.user-list').append($('<li>' + users.users[i].name + '</li>'))
+				addUser(users.users[i]);
 			}		
 		}
 	}
-	
+
+	function addUser(user){
+		$('ul.user-list').append($('<li>' + user.name + '</li>'));
+	}	
 });

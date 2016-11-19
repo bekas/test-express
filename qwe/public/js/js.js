@@ -3,13 +3,15 @@ window.onload = function(){
 
 	document.getElementById('user-add-button').onclick = function(){		
 		var user = {name: document.getElementById('user-add-name').value };
+		addUser(user);
+		sendUser(user);
+	}
+	
+	function sendUser(user){
 		var xhr = new XMLHttpRequest();
 		xhr.open('POST', '/users/json/', true);
 		xhr.setRequestHeader('Content-Type', 'application/json');
-		xhr.send(JSON.stringify(user)); 
-		xhr.onreadystatechange = function(){		
-			loadUsers();
-		}
+		xhr.send(JSON.stringify(user)); 		
 	}
 	
 	
@@ -22,11 +24,15 @@ window.onload = function(){
 			document.getElementsByClassName('user-list')[0].innerHTML = "";	
 			var users = JSON.parse(xhr.response).users;
 			for(var i=0;i<users.length;i++){
-				 var li = document.createElement('li');
-  				 li.innerHTML = users[i].name;
-				 document.getElementsByClassName('user-list')[0].appendChild(li);
+				addUser(users[i]);
 			}			
 		}
+	}
+
+	function addUser(user){
+		var li = document.createElement('li');
+  		li.innerHTML = user.name;
+		document.getElementsByClassName('user-list')[0].appendChild(li);
 	}
 	
 }

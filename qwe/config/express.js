@@ -7,6 +7,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var compress = require('compression');
 var methodOverride = require('method-override');
+var cors = require('cors');
+
 
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
@@ -16,6 +18,7 @@ module.exports = function(app, config) {
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'ejs');
 
+app.use(cors());
   // app.use(favicon(config.root + '/public/img/favicon.ico'));
   app.use(logger('dev'));
   app.use(bodyParser.json());
@@ -31,6 +34,20 @@ module.exports = function(app, config) {
   controllers.forEach(function (controller) {
     require(controller)(app);
   });
+/*
+var allowCrossDomain = function(req, res, next) {
+    if ('OPTIONS' == req.method) {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
+      res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+      res.send(200);
+    }
+    else {
+      next();
+    }
+};
+*/
+//app.use(allowCrossDomain);
 
   app.use(function (req, res, next) {
     var err = new Error('Not Found');

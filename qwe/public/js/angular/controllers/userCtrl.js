@@ -3,8 +3,9 @@ angular.module('mySuperApp')
     $scope.users = Users.getUsers();
     $scope.userName = ''; 
     $scope.addUser = function() {
-      Users.addUser({name: $scope.userName});
-      $scope.users = Users.getUsers();
+      var user = {name: $scope.userName};
+      $scope.users.users.push(user);
+      Users.addUser(user);
     };
   });
 
